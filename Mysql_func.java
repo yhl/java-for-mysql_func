@@ -32,12 +32,18 @@ public class Mysql_func {
     }
 
     /*Execute SQL*/
-    public ResultSet executeSQL(Connection connection, String sql) {
+    public Object executeSQL(Connection connection, String sql) {
         try {
-            connection.prepareStatement(sql);
+            //connection.prepareStatement(sql);
             java.sql.Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
-            return resultSet;
+            boolean result = statement.execute(sql);
+            if(result == true){ //SELECT
+                ResultSet resultSet = statement.getResultSet();
+                return resultSet;
+            }else{  //INSERT、UPDATE or DELETE
+               int count = statement.getUpdateCount();
+               return count;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
