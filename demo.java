@@ -7,6 +7,6 @@ public class demo {
         Connection connection = m.connMysql();
         ResultSet resultSet = m.executeSQL(connection, "SELECT * FROM admin");
         Integer i = m.getCount(resultSet);
-        System.out.println("目前資料表總筆數:"+i);
+        System.out.println("Total Count:"+i);
     }
 }
