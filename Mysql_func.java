@@ -4,11 +4,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Mysql_func {
-    final String host = "localhost";
-    final String port = "3306";
-    final String db = "members1";
-    final String id = "root";
-    final String pw = "mysql";
+    final String host = "localhost";    //mysql host
+    final String port = "3306";        //mysql port
+    final String db = "";             //mysql database
+    final String id = "root";          //mysql account
+    final String pw = "";             //mysql password
+
     /*Connect Mysql*/
     public Connection connMysql() {
         try {
@@ -16,16 +17,16 @@ public class Mysql_func {
             Connection connection = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + db, "" + id + "", "" + pw + "");
             return connection;
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
             return null;
         } catch (InstantiationException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
             return null;
         } catch (IllegalAccessException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
             return null;
         } catch (SQLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
             return null;
         }
     }
@@ -38,7 +39,7 @@ public class Mysql_func {
             ResultSet resultSet = statement.executeQuery(sql);
             return resultSet;
         } catch (SQLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
             return null;
         }
     }
@@ -50,7 +51,7 @@ public class Mysql_func {
             Integer count = resultSet.getRow();
             return count;
         } catch (SQLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
             return null;
         }
     }
